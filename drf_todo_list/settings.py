@@ -64,6 +64,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -143,8 +144,7 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-        'rest_framework_csv.renderers.CSVRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer'
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -155,8 +155,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.DjangoModelPermissions',
+        # 'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.DjangoModelPermissions',
     ),
     'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler'
 }
@@ -165,7 +165,8 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/es/2.2/topics/auth/customizing/#authentication-backends
 AUTHENTICATION_BACKENDS = [
     # 'django.contrib.auth.backends.ModelBackend',
-    'todo_list.auth.EmailBackend'
+    # 'app_todo_list.auth.EmailBackend'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = env('CORS_ORIGIN_ALLOW_ALL')
+# CORS_ALLOW_CREDENTIALS = True
