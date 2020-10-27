@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 class GenericList(ListCreateAPIView):
     # permission_classes = [IsAuthenticated]
     # authentication_classes = [JWTAuthentication]
-
+    """
     def post(self, request, format=None):
         data = request.data.dict()
         serializer = self.serializer_class(data=data)
@@ -21,6 +21,7 @@ class GenericList(ListCreateAPIView):
             serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+    """
 
 
 class GenericDetail(RetrieveUpdateDestroyAPIView):
